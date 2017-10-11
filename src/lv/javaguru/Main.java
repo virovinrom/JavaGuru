@@ -21,5 +21,6 @@ public class Main {
                 System.out.println("Wrong input number");
             }
         }
+        scaner.close();
     }
 }
