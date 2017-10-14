@@ -3,8 +3,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class ArreyExrciseEight {
-    public int countRow = 0, maxCountRow = 0, maxRow = 0;
-    public int countColumn = 0, maxCountColumn = 0, maxColumn = 0;
+    private int countRow = 0, maxCountRow = 0, maxRow = 0;
+    private int countColumn = 0, maxCountColumn = 0, maxColumn = 0;
     public static void main(String[] args) {
         ArreyExrciseEight a = new ArreyExrciseEight();
         int[][] arr = new int [4][10];
@@ -51,13 +51,13 @@ public class ArreyExrciseEight {
         System.out.println("Max repetition in column Nr.: " +  a.maxColumn);
     }
 
-    public  void checkMaxRow(int i){
+    private  void checkMaxRow(int i){
         if(countRow >= maxCountRow){
             maxCountRow = countRow;
             maxRow = i + 1;
         }
     }
-    public  void checkMaxColumn(int ii){
+    private  void checkMaxColumn(int ii){
         if(countColumn >= maxCountColumn){
             maxCountColumn = countColumn;
             maxColumn = ii + 1;

@@ -17,7 +17,7 @@ public class WeekSix {
     }
 
 
-    public static int[] excerciseOne(){
+    private static int[] excerciseOne(){
         int[] arr;
         Random random = new Random();
         arr = new int[10];
@@ -40,7 +40,7 @@ public class WeekSix {
 9
 
      */
-    public static void excerciseThree(int[] arr){
+    private static void excerciseThree(int[] arr){
         int evenCount = 0;
         int unEvenCount = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -57,7 +57,7 @@ UnEvent numbers count: 5
 Event numbers count: 5
 
  */
-    public static void excerciseFive(int[] arr){
+    private static void excerciseFive(int[] arr){
         int maxElmIndex = 0;
         int maxElm = arr[0];
         for (int i = 1; i < arr.length - 1; i++) {
@@ -69,7 +69,7 @@ Event numbers count: 5
         arr[maxElmIndex] = maxElm;
     }
 
-    public static void excerciseSixBubbleSort(int[] arr){
+    private static void excerciseSixBubbleSort(int[] arr){
         int a = 0;
         for (int i = 0; i < arr.length; i++){
             for (int ii = 1; ii < (arr.length - i); ii++){

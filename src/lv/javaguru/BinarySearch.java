@@ -16,7 +16,7 @@ public class BinarySearch {
             }
         }
     }
-    public static int userInput() {
+    private static int userInput() {
         Scanner scaner = new Scanner(System.in);
         System.out.println("Please enter number from 1 to 20:");
         int number = Integer.valueOf(scaner.nextLine());
@@ -24,7 +24,7 @@ public class BinarySearch {
         return number;
     }
 
-    public static int search(int[] arr, int number) {
+    private static int search(int[] arr, int number) {
         int index = -1;
         int bottom = 0, top = arr.length, guessInd, i = 0;
         boolean tr = true;
@@ -51,7 +51,7 @@ public class BinarySearch {
         return index;
     }
 
-    public static int[] arrBuilder(int[] arr){
+    private static int[] arrBuilder(int[] arr){
         Random rand = new Random();
         for (int i = 0; i < arr.length; i++)
             arr[i] = rand.nextInt(20) + 1;
