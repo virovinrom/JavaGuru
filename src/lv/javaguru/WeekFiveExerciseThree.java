@@ -7,7 +7,7 @@ public class WeekFiveExerciseThree {
         Random random = new Random();
         int randRange = random.nextInt(100) + 1; // так правильно записано, что такое bound?
         Scanner scaner = new Scanner(System.in);
-        //System.out.println("Random " + randRange);
+
         System.out.println("Please guess number from 1 to 100:");
         int whileOut = 0;
         while(whileOut == 0){
