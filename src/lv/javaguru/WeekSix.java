@@ -44,7 +44,7 @@ public class WeekSix {
         int evenCount = 0;
         int unEvenCount = 0;
         for (int i = 0; i < arr.length; i++) {
-            if ((arr[i] % 2 == 0) && (arr[i] != 0)){
+            if ((arr[i] % 2 == 0)){
                 evenCount++;
             }
             unEvenCount = arr.length - evenCount;
@@ -72,11 +72,11 @@ Event numbers count: 5
     private static void excerciseSixBubbleSort(int[] arr){
         int a = 0;
         for (int i = 0; i < arr.length; i++){
-            for (int ii = 1; ii < (arr.length - i); ii++){
-                if (arr[ii - 1] > arr[ii]) {
-                    a = arr[ii - 1];
-                    arr[ii - 1] = arr[ii];
-                    arr[ii] = a;
+            for (int j = 1; j < (arr.length - i); j++){
+                if (arr[j - 1] > arr[j]) {
+                    a = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = a;
 
                 }
             }

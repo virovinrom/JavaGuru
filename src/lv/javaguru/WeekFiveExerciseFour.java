@@ -10,37 +10,37 @@ public class WeekFiveExerciseFour {
         System.out.println("User number: " + userNumber);
         // ВВод пользователя заменен на random
 
-        int myFirsGuess = guess();
+        int myFirsGuess = 50;
         guessing(userNumber, myFirsGuess);
     }
 
     public static void guessing(int user, int machine){
-        int one = 1;
-        int hundred = 100;
-        boolean t = true;
+        int min = 1;
+        int max = 100;
+        boolean whileOut = true;
         int guessCount = 0;
 
-        while (t){
+        while (whileOut){
             guessCount++;
             System.out.println("Guessing: " + machine);
             if(user == machine){
-                t = false;
+                whileOut = false;
                 System.out.println("Number: " + machine + ".");
                 System.out.println("Guess counts: " + guessCount);
             }else if(machine < user){
-                one = machine;
-                machine = hundred - (hundred - machine) / 2;
+                min = machine;
+                machine = max - (max - machine) / 2;
             }else if (machine > user){
-                hundred = machine;
-                machine = one + (machine - one) / 2;
+                max = machine;
+                machine = min + (machine - min) / 2;
             }
         }
     }
 
     public static int guess(){
         Random random = new Random();
-        int Number = random.nextInt(100) + 1;
-        return Number;
+        int number = random.nextInt(100) + 1;
+        return number;
     }
 }
 

@@ -9,12 +9,12 @@ public class WeekFiveExerciseThree {
         Scanner scaner = new Scanner(System.in);
 
         System.out.println("Please guess number from 1 to 100:");
-        int whileOut = 0;
-        while(whileOut == 0){
+        Boolean whileOut = true;
+        while(whileOut){
             int userGuess = Integer.valueOf(scaner.nextLine());
             if (userGuess == randRange){
                 System.out.println("Lucky");
-                whileOut = 1;
+                whileOut = false;
             }else if(userGuess <randRange){
                 System.out.println("Your number less. Please guess again.");
             }else if(userGuess > randRange){

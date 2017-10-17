@@ -19,7 +19,8 @@ public class BinarySearch {
     private static int userInput() {
         Scanner scaner = new Scanner(System.in);
         System.out.println("Please enter number from 1 to 20:");
-        int number = Integer.valueOf(scaner.nextLine());
+        String s = scaner.nextLine();
+        int number = Integer.valueOf(s);
         // почему при scaner.close(); выдает ошибку при indexOut == -1 во второй итерации while?
         return number;
     }
@@ -27,12 +28,11 @@ public class BinarySearch {
     private static int search(int[] arr, int number) {
         int index = -1;
         int bottom = 0, top = arr.length, guessInd, i = 0;
-        boolean tr = true;
-        while (tr) {
+
+        while (top != bottom) {
             i++;
             guessInd = (bottom + top) / 2;
             if (arr[guessInd] == number){
-                tr = false;
                 index = guessInd;
                 System.out.println(i);
                 return index;
@@ -45,7 +45,6 @@ public class BinarySearch {
             }
             if (top == bottom){
                 System.out.println("Error, not such number.");
-                tr = false;
             }
         }
         return index;

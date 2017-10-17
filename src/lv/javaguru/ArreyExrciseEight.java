@@ -3,16 +3,20 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class ArreyExrciseEight {
-    private int countRow = 0, maxCountRow = 0, maxRow = 0;
-    private int countColumn = 0, maxCountColumn = 0, maxColumn = 0;
+    private int countRow = 0;
+    private int maxCountRow = 0;
+    private int maxRow = 0;
+    private int countColumn = 0;
+    private int maxCountColumn = 0;
+    private int maxColumn = 0;
     public static void main(String[] args) {
         ArreyExrciseEight a = new ArreyExrciseEight();
         int[][] arr = new int [4][10];
         Random random = new Random();
 
         for (int i = 0; i < arr.length; i++) {
-            for (int ii = 0; ii < arr[i].length; ii++) {
-              arr[i][ii] = random.nextInt(2) ;
+            for (int j = 0; j < arr[i].length; j++) {
+              arr[i][j] = random.nextInt(2) ;
            }
             System.out.println(Arrays.toString(arr[i]));
         }
