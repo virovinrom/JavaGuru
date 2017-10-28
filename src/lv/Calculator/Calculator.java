@@ -24,9 +24,9 @@ public class Calculator {
         return operation.calc(Double.valueOf(userInputSting[0]), Double.valueOf(userInputSting[2]));
     }
     private void userInput(){
-        String[] countInput = {"first number: ", "sign: ", "second number; "};
+        String[] inputCondition = {"first number: ", "sign: ", "second number; "};
         for (int i = 0; i < 3; i++){
-            System.out.println("Please enter " + countInput[i]);
+            System.out.println("Please enter " + inputCondition[i]);
             Scanner scanner = new Scanner(System.in);
             userInputSting[i] = scanner.nextLine();
             if (userInputSting[i].isEmpty()){ // Можно было всунуть проверку на значение, но не это было целью
@@ -43,7 +43,6 @@ Please enter sign:
 +
 Please enter second number;
 2
-+
 Answer: 6.0
 
 Process finished with exit code 0
