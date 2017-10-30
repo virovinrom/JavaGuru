@@ -16,7 +16,7 @@ public class Calculator {
             operation = new Summa();
         }else if (userInputSting[1].equals("-")){
             operation = new Subtraction();
-        }else  if (userInputSting[1].equals("/")){
+        }else if (userInputSting[1].equals("/")){
             operation = new Division();
         }else{
             operation = new Multiplication();
