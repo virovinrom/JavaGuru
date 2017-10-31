@@ -3,12 +3,9 @@ package lv.FourInALine;
 import java.util.ArrayList;
 
 public class MoveCheck {
-    String line = new String();
+    private String line = new String();
     public boolean check (ArrayList list){
-        boolean horizontal = winCheckHorizontal(list);
-        boolean vertival = winCheckVertical(list);
-        //boolean diagonal; пока не сделал :(
-        if (!horizontal || !vertival) {
+        if (!winCheckHorizontal(list) || !winCheckVertical(list)) {
             return false;
         }else{return true;}
     }

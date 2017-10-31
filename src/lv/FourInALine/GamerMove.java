@@ -2,23 +2,28 @@ package lv.FourInALine;
 import java.util.ArrayList;
 
 public abstract class GamerMove {
-        String sign;
-        boolean theWinner = true;
-        boolean endOfMoves;
-        int index;
-        public ArrayList<ArrayList<String>> move(ArrayList list ){
-            MoveCheck moveCheck = new MoveCheck();
-            for (int i = 5; i >= 0; i--){
-                if (((ArrayList)list.get(i)).get(index).equals("_")){
-                    ((ArrayList)list.get(i)).set(index, sign);
-                    setTheWinner(moveCheck.check(list));
-                    i = 0;
-                } else if  (!((ArrayList) list.get(0)).contains("_")){
-                    endOfMoves = true;
-                }
+
+    protected String sign;
+    private boolean theWinner = true;
+    private boolean endOfMoves;
+    protected int index;
+
+    public ArrayList<ArrayList<String>> move(ArrayList list ){
+        MoveCheck moveCheck = new MoveCheck();
+        for (int i = 5; i >= 0; i--){
+            if (((ArrayList)list.get(i)).get(getIndex()).equals("_")){
+                ((ArrayList)list.get(i)).set(getIndex(), getSign());
+                setTheWinner(moveCheck.check(list));
+                i = 0;
+            } else if  (!((ArrayList) list.get(0)).contains("_")){
+                setEndOfMoves(true);
             }
-            return list;
         }
+        return list;
+    }
+    public void setEndOfMoves(boolean endOfMoves) {
+        this.endOfMoves = endOfMoves;
+    }
     public boolean getEndOfMoves(){
         return endOfMoves;
     }
@@ -28,13 +33,19 @@ public abstract class GamerMove {
         }
     }
     public String setSign(String str){
-        return sign = str;
+        return this.sign = str;
+    }
+    public String getSign() {
+        return this.sign;
     }
     public  boolean setTheWinner(boolean winner){
-        return theWinner = winner;
+        return this.theWinner = winner;
     }
     public  boolean getTheWinner(){
-        return theWinner;
+        return this.theWinner;
+    }
+    public int getIndex() {
+        return this.index;
     }
     public abstract int setIndex();
 }
