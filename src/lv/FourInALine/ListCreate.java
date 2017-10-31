@@ -8,7 +8,7 @@ public class ListCreate {
         for (int i = 0; i < 6; i++) {
             listOfMoves.add(new ArrayList<>());
             for (int j = 0; j < 7; j++) {
-                listOfMoves.get(i).add("");
+                listOfMoves.get(i).add("_");
             }
         }
     }

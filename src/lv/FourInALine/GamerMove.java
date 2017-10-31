@@ -1,47 +1,40 @@
 package lv.FourInALine;
 import java.util.ArrayList;
-import java.util.Random;
 
 public abstract class GamerMove {
-    String sign;
-    boolean theWinner;
-    boolean print;
-    public ArrayList<ArrayList<String>> move(ArrayList list ){
-        Random rand = new Random();
-        int index = rand.nextInt(6);
-        for (int i = 5; i >= 0; i--){
-            if (((ArrayList)list.get(i)).get(index).equals("")){
-                ((ArrayList)list.get(i)).set(index, sign);
-                theWinner = winCheck(list);
-                i = 0;
+        String sign;
+        boolean theWinner = true;
+        boolean endOfMoves;
+        int index;
+        public ArrayList<ArrayList<String>> move(ArrayList list ){
+            MoveCheck moveCheck = new MoveCheck();
+            for (int i = 5; i >= 0; i--){
+                if (((ArrayList)list.get(i)).get(index).equals("_")){
+                    ((ArrayList)list.get(i)).set(index, sign);
+                    setTheWinner(moveCheck.check(list));
+                    i = 0;
+                } else if  (!((ArrayList) list.get(0)).contains("_")){
+                    endOfMoves = true;
+                }
             }
+            return list;
         }
-        MovesPrint pr = new MovesPrint();
-        pr.printList(list);
-        return list;
+    public boolean getEndOfMoves(){
+        return endOfMoves;
     }
-
-    public boolean winCheck(ArrayList list){
-        String line = new String();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 5; i >= 0; i--){
-            for (int j = 0; j < 7; j++){
-                line = line + (((ArrayList)list.get(i)).get(j));
-            }
-            if (!lineCheck(line)) {i = -1;}
+    public void printList(ArrayList list){
+        for (int i = 0; i < 6; i++) {
+            System.out.println(list.get(i));
         }
-        return lineCheck(line);
     }
-    public boolean lineCheck(String line){
-        if (line.contains("XXXX")){
-            return false;
-        }else if (line.contains("OOOO")){
-            return false;
-        }else return true;
+    public String setSign(String str){
+        return sign = str;
     }
-
-    public abstract String gamerSign(String str);
-    public abstract boolean theWinner();
-
-
+    public  boolean setTheWinner(boolean winner){
+        return theWinner = winner;
+    }
+    public  boolean getTheWinner(){
+        return theWinner;
+    }
+    public abstract int setIndex();
 }
