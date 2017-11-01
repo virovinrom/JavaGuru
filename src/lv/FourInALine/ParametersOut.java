@@ -1,6 +1,6 @@
 package lv.FourInALine;
 
-public class TheGame {
+public class ParametersOut {
     ListCreate listCreate;
     GamerMove gamerOne;
     GamerMove gamerTwo;
