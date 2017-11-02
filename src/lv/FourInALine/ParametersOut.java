@@ -13,7 +13,6 @@ public class ParametersOut {
         while (gamer[0].getTheWinner() && gamer[1].getTheWinner() && !gamer[1].getEndOfMoves()){
             for (int i = 0; i < 2; i++){
                 if (gamer[i].getTheWinner()){
-                    System.out.println("Please select your move player " + gamer[i].sign + ", from 0 to 6");
                     gamer[i].inputCheck();
                     gamer[i].move(listCreate.getListOfMoves());
                     gamer[i].printList(listCreate.getListOfMoves());
