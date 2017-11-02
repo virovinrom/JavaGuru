@@ -2,8 +2,8 @@ package lv.FourInALine;
 
 public class ParametersOut {
     ListCreate listCreate;
-    GamerMove gamerOne;
-    GamerMove gamerTwo;
+    GamerMove[] gamer = new GamerMove[2];
+    //GamerMove gamerTwo;
 
     public void start(){
         setParametersFromUser(getParametersFromUser());
@@ -11,23 +11,21 @@ public class ParametersOut {
         outputWinner();
     }
     public void runGame(){
-        while (gamerOne.getTheWinner() && gamerTwo.getTheWinner() && !gamerTwo.getEndOfMoves()){
-            System.out.println("Please select your move player " + gamerOne.sign + ", from 0 to 6");
-            gamerOne.inputCheck();
-            gamerOne.move(listCreate.getListOfMoves());
-            gamerOne.printList(listCreate.getListOfMoves());
-            if(gamerOne.getTheWinner()){
-                System.out.println("Please select your move player " + gamerTwo.sign + ", from 0 to 6");
-                gamerTwo.inputCheck();
-                gamerTwo.move(listCreate.getListOfMoves());
-                gamerTwo.printList(listCreate.getListOfMoves());
+        while (gamer[0].getTheWinner() && gamer[1].getTheWinner() && !gamer[1].getEndOfMoves()){
+            for (int i = 0; i < 2; i++){
+                if (gamer[i].getTheWinner()){
+                    System.out.println("Please select your move player " + gamer[i].sign + ", from 0 to 6");
+                    gamer[i].inputCheck();
+                    gamer[i].move(listCreate.getListOfMoves());
+                    gamer[i].printList(listCreate.getListOfMoves());
+                }
             }
         }
     }
     public void outputWinner(){
-        if (!gamerOne.getTheWinner()){
+        if (!gamer[0].getTheWinner()){
             System.out.println("The winner is the player with sign X");
-        }else if (!gamerTwo.getTheWinner()){
+        }else if (!gamer[1].getTheWinner()){
             System.out.println("The winner is the player with sign O");
         }else {
             System.out.println("Draw");
@@ -50,16 +48,16 @@ public class ParametersOut {
         listCreate = new ListCreate();
         listCreate.listCreate();
         if (playerIndex == 0){
-            gamerOne = new ComputerGamer();
-            gamerTwo = new ComputerGamer();
+            gamer[0] = new ComputerGamer();
+            gamer[1] = new ComputerGamer();
         }else if (playerIndex == 1){
-            gamerOne = new ComputerGamer();
-            gamerTwo = new UserGamer();
+            gamer[0] = new ComputerGamer();
+            gamer[1] = new UserGamer();
         }else if (playerIndex == 2){
-            gamerOne = new UserGamer();
-            gamerTwo = new UserGamer();
+            gamer[0] = new UserGamer();
+            gamer[1] = new UserGamer();
         }
-        gamerOne.setSign("X");
-        gamerTwo.setSign("O");
+        gamer[0].setSign("X");
+        gamer[1].setSign("O");
     }
 }
