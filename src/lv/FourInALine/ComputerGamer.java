@@ -8,5 +8,4 @@ public class ComputerGamer extends GamerMove {
         index = rand.nextInt(7);
         return index;
     }
-
 }

@@ -32,6 +32,13 @@ public abstract class GamerMove {
             System.out.println(list.get(i));
         }
     }
+    public int inputCheck(){
+        index = -1;
+        while (index < 0 || index > 6){
+            setIndex();
+        }
+        return  index;
+    }
     public String setSign(String str){
         return this.sign = str;
     }

@@ -12,13 +12,13 @@ public class ParametersOut {
     }
     public void runGame(){
         while (gamerOne.getTheWinner() && gamerTwo.getTheWinner() && !gamerTwo.getEndOfMoves()){
-            System.out.println("Please select your move player " + gamerOne.sign);
-            gamerOne.setIndex();
+            System.out.println("Please select your move player " + gamerOne.sign + ", from 0 to 6");
+            gamerOne.inputCheck();
             gamerOne.move(listCreate.getListOfMoves());
             gamerOne.printList(listCreate.getListOfMoves());
             if(gamerOne.getTheWinner()){
-                System.out.println("Please select your move player " + gamerTwo.sign);
-                gamerTwo.setIndex();
+                System.out.println("Please select your move player " + gamerTwo.sign + ", from 0 to 6");
+                gamerTwo.inputCheck();
                 gamerTwo.move(listCreate.getListOfMoves());
                 gamerTwo.printList(listCreate.getListOfMoves());
             }
@@ -34,13 +34,17 @@ public class ParametersOut {
         }
     }
     public int getParametersFromUser(){
-        System.out.println("Please select players count: ");
-        System.out.println("Computer vs Computer, enter \"0\" ");
-        System.out.println("One player vs Computer, enter \"1\" ");
-        System.out.println("Two player, enter \"2\" ");
-        System.out.println("......");
+        int input = -1;
         UserGamer userGamer = new UserGamer();
-        return userGamer.setIndex();
+        while (input < 0 || input > 2){
+            System.out.println("Please select players count: ");
+            System.out.println("Computer vs Computer, enter \"0\" ");
+            System.out.println("One player vs Computer, enter \"1\" ");
+            System.out.println("Two player, enter \"2\" ");
+            System.out.println("......");
+            input = userGamer.setIndex();
+        }
+        return input;
     }
     public void setParametersFromUser(int playerIndex){
         listCreate = new ListCreate();
