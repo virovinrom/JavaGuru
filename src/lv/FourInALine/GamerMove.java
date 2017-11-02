@@ -35,6 +35,7 @@ public abstract class GamerMove {
     public int inputCheck(){
         index = -1;
         while (index < 0 || index > 6){
+            System.out.println("Please select your move player " + getSign() + ", from 0 to 6");
             setIndex();
         }
         return  index;
