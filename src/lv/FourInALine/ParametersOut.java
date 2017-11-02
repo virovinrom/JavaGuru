@@ -3,7 +3,6 @@ package lv.FourInALine;
 public class ParametersOut {
     ListCreate listCreate;
     GamerMove[] gamer = new GamerMove[2];
-    //GamerMove gamerTwo;
 
     public void start(){
         setParametersFromUser(getParametersFromUser());
