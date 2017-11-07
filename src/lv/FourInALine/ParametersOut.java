@@ -1,61 +1,57 @@
 package lv.FourInALine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParametersOut {
     ListCreate listCreate;
-    GamerMove[] gamer = new GamerMove[2];
-
+    List<GamerMove> gamer = new ArrayList<>();
     public void start(){
-        setParametersFromUser(getParametersFromUser());
+        String[] playerNum = {"first", "second"};
+        for (int i = 0; i < 2; i++){
+            getParametersFromUser(playerNum[i]);
+        }
+        listCreate = new ListCreate();
+        listCreate.listCreate();
+        gamer.get(0).setSign("X");
+        gamer.get(1).setSign("O");
         runGame();
         outputWinner();
     }
     public void runGame(){
-        while (gamer[0].getTheWinner() && gamer[1].getTheWinner() && !gamer[1].getEndOfMoves()){
+        while (gamer.get(0).getTheWinner() && gamer.get(1).getTheWinner() && !gamer.get(1).getEndOfMoves()){
             for (int i = 0; i < 2; i++){
-                if (gamer[i].getTheWinner()){
-                    gamer[i].inputCheck();
-                    gamer[i].move(listCreate.getListOfMoves());
-                    gamer[i].printList(listCreate.getListOfMoves());
+                if (gamer.get(i).getTheWinner()){
+                    gamer.get(i).inputCheck();
+                    gamer.get(i).move(listCreate.getListOfMoves());
+                    gamer.get(i).printList(listCreate.getListOfMoves());
                 }
             }
         }
     }
     public void outputWinner(){
-        if (!gamer[0].getTheWinner()){
+        if (!gamer.get(0).getTheWinner()){
             System.out.println("The winner is the player with sign X");
-        }else if (!gamer[1].getTheWinner()){
+        }else if (!gamer.get(1).getTheWinner()){
             System.out.println("The winner is the player with sign O");
         }else {
             System.out.println("Draw");
         }
     }
-    public int getParametersFromUser(){
+    public void getParametersFromUser(String playerNum){
         int input = -1;
         UserGamer userGamer = new UserGamer();
-        while (input < 0 || input > 2){
-            System.out.println("Please select players count: ");
-            System.out.println("Computer vs Computer, enter \"0\" ");
-            System.out.println("One player vs Computer, enter \"1\" ");
-            System.out.println("Two player, enter \"2\" ");
-            System.out.println("......");
+        while (input < 1 || input > 2){
+            System.out.println("Please select " + playerNum + " player: (Computer: \"1\"/ Human: \"2\")");
             input = userGamer.setIndex();
         }
-        return input;
+        setParametersFromUser(input);
     }
     public void setParametersFromUser(int playerIndex){
-        listCreate = new ListCreate();
-        listCreate.listCreate();
-        if (playerIndex == 0){
-            gamer[0] = new ComputerGamer();
-            gamer[1] = new ComputerGamer();
-        }else if (playerIndex == 1){
-            gamer[0] = new ComputerGamer();
-            gamer[1] = new UserGamer();
-        }else if (playerIndex == 2){
-            gamer[0] = new UserGamer();
-            gamer[1] = new UserGamer();
+        if(playerIndex == 1){
+            gamer.add(new ComputerGamer());
+        }else {
+            gamer.add(new UserGamer());
         }
-        gamer[0].setSign("X");
-        gamer[1].setSign("O");
     }
 }
