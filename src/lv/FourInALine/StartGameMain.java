@@ -3,7 +3,7 @@ package lv.FourInALine;
 
 public class StartGameMain {
     public static void main(String[] args) {
-        ParametersOut game = new ParametersOut();
+        GameRun game = new GameRun();
         game.start();
     }
 }
