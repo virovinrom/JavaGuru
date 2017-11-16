@@ -4,17 +4,17 @@ import static lv.FourInALine.GameRun.*;
 
 public abstract class Player {
 
-    protected String sign;
+    protected Mark sign;
     private static boolean endOfMoves;
     private boolean winner = false;
     protected int moveIndex;
 
-    public String[][] move(String[][] field ){
+    public Mark[][] move(Mark[][] field){
         for (int i = VERTICAL - 1; i >= 0; i--){
-            if (field[i][getMove()].equals("_")){
+            if (field[i][getMove()].equals(Mark.EMPTY)){
                 field[i][getMove()] = getSign();
                 i = 0;
-            } else if (!Arrays.toString(field[0]).contains("_")){
+            } else if (!field[0].equals(Mark.EMPTY)){
                 setEndOfMoves(true);
             }
         }
@@ -44,10 +44,10 @@ public abstract class Player {
     public boolean getEndOfMoves(){
         return endOfMoves;
     }
-    public String setSign(String str){
+    public Mark setSign(Mark str){
         return this.sign = str;
     }
-    public String getSign() {
+    public Mark getSign() {
         return this.sign;
     }
     public int getMove() {

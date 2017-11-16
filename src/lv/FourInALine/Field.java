@@ -5,24 +5,24 @@ import java.util.Arrays;
 import static lv.FourInALine.GameRun.*;
 
 public class Field {
-    private String[][] field = new String[VERTICAL][HORIZONTAL];
+    private Mark[][] field = new Mark[VERTICAL][HORIZONTAL];
     private String line = new String();
-    public String[][] getField() {
+    public Mark[][] getField() {
         return field;
     }
     Field(){
         for (int i = 0; i < VERTICAL; i++) {
             for (int j = 0; j < HORIZONTAL; j++) {
-                field[i][j] = "_";
+                field[i][j] = Mark.EMPTY;
             }
         }
     }
-    public void printField(String[][] field){
+    public void printField(Mark[][] field){
         for (int i = 0; i < VERTICAL; i++) {
             System.out.println(Arrays.toString(field[i]));
         }
     }
-    public boolean checkForWinning (String[][] field){
+    public boolean checkForWinning (Mark[][] field){
         if (!winCheckHorizontal(field) && !winCheckVertical(field)) {
             return false;
         }else{return true;}
@@ -33,21 +33,21 @@ public class Field {
     public boolean horizontalCheck(){
         return Arrays.toString(field[0]).contains("_");
     }
-    public boolean winCheckHorizontal(String[][] field){
+    public boolean winCheckHorizontal(Mark[][] field){
         for (int i = VERTICAL - 1; i >= 0; i--){
             line = "";
             for (int j = 0; j < HORIZONTAL; j++){
-                line = line + field[i][j];
+                line = line + field[i][j].toString();
             }
             if (lineCheck(line)) {i = 0;}
         }
         return lineCheck(line);
     }
-    public boolean winCheckVertical(String[][] field){
+    public boolean winCheckVertical(Mark[][] field){
         for (int i = 0; i < HORIZONTAL; i++){
             line = "";
             for (int j = 0; j < VERTICAL ; j++) {
-                line = line + field[j][i];
+                line = line + field[j][i].toString();
             }
             if (lineCheck(line)) {i = HORIZONTAL;}
         }

@@ -16,8 +16,8 @@ public class GameRun {
         field.printField(field.getField());
         setGamerOne(listGamer.get(0));
         setGamerTwo(listGamer.get(1));
-        getGamerOne().setSign("X");
-        getGamerTwo().setSign("O");
+        getGamerOne().setSign(Mark.X);
+        getGamerTwo().setSign(Mark.O);
 
         while (!getGamerOne().getWinner() && !getGamerTwo().getWinner() && !getGamerTwo().getEndOfMoves()){
             runGame(getGamerOne());
