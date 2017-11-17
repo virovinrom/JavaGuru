@@ -1,36 +1,37 @@
 package lv.FourInALine;
-import java.util.Arrays;
 import static lv.FourInALine.GameRun.*;
 
 public abstract class Player {
 
     protected Mark sign;
+
     private static boolean endOfMoves;
     private boolean winner = false;
     protected int moveIndex;
 
-    public Mark[][] move(Mark[][] field){
+    public void move(Mark[][] field ){
         for (int i = VERTICAL - 1; i >= 0; i--){
             if (field[i][getMove()].equals(Mark.EMPTY)){
                 field[i][getMove()] = getSign();
                 i = 0;
-            } else if (!field[0].equals(Mark.EMPTY)){
-                setEndOfMoves(true);
             }
         }
-        return field;
     }
-    public int inputMove(Player gamer, Field field){
+
+    public void moveCheck(Player gamer, Field field){
         gamer.moveIndex = -1;
-        while (gamer.moveIndex < 0 || gamer.moveIndex > HORIZONTAL - 1){
+        while (gamer.getMove() < 0 || gamer.getMove() > HORIZONTAL - 1 ){
             System.out.println("Please select your move player " + gamer.getSign() + ", from 0 to 6");
-            if(!field.verticalCheck(gamer.setMove())){
+            try {
+                if (!field.verticalCheck(gamer.setMove())) {
+                    gamer.moveIndex = -1;
+                    System.out.println("Please choose another column.");
+                }
+            }catch(ArrayIndexOutOfBoundsException exception) {
                 gamer.moveIndex = -1;
-                System.out.println("Please choose another column.");
+                System.out.println("Wrong column index.");
             }
-            gamer.setEndOfMoves(!field.horizontalCheck());
         }
-        return  gamer.moveIndex;
     }
     public void setEndOfMoves(boolean endOfMoves) {
         this.endOfMoves = endOfMoves;
@@ -44,8 +45,9 @@ public abstract class Player {
     public boolean getEndOfMoves(){
         return endOfMoves;
     }
-    public Mark setSign(Mark str){
-        return this.sign = str;
+
+    public void setSign(Mark sign) {
+       this.sign = sign;
     }
     public Mark getSign() {
         return this.sign;
