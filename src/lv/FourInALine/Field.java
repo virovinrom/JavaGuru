@@ -6,10 +6,8 @@ import static lv.FourInALine.GameRun.*;
 
 public class Field {
     private Mark[][] field = new Mark[VERTICAL][HORIZONTAL];
-    private String line = new String();
-    public Mark[][] getField() {
-        return field;
-    }
+    private String line;
+
     Field(){
         for (int i = 0; i < VERTICAL; i++) {
             for (int j = 0; j < HORIZONTAL; j++) {
@@ -28,10 +26,17 @@ public class Field {
         }else{return true;}
     }
     public boolean verticalCheck(int moveIndex){
-        return field[0][moveIndex].contains("_");
+        return field[0][moveIndex].equals(Mark.EMPTY);
     }
     public boolean horizontalCheck(){
-        return Arrays.toString(field[0]).contains("_");
+        boolean condition = false;
+        for (int i = 0; i < HORIZONTAL; i++){
+            if (field[0][i].equals(Mark.EMPTY)){
+                condition = field[0][i].equals(Mark.EMPTY);
+                i = HORIZONTAL;
+            }
+        }
+         return condition;
     }
     public boolean winCheckHorizontal(Mark[][] field){
         for (int i = VERTICAL - 1; i >= 0; i--){
@@ -60,5 +65,8 @@ public class Field {
         }else if (line.contains("OOOO")){
             return true;
         }else return false;
+    }
+    public Mark[][] getField() {
+        return field;
     }
 }
