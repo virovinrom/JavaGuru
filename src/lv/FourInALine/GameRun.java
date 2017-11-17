@@ -1,6 +1,7 @@
 package lv.FourInALine;
 import java.util.List;
 import java.util.ArrayList;
+
 public class GameRun {
     protected static final int HORIZONTAL   = 7;
     protected static final int VERTICAL   = 6;
@@ -8,7 +9,7 @@ public class GameRun {
     private Field field = new Field();
     private Player gamerOne;
     private Player gamerTwo;
-    private List<Player> listGamer = new ArrayList<>();
+    private List<Player> listGamer = new ArrayList<Player>();
 
     public void start(){
         getParametersFromUser("first");
@@ -26,10 +27,11 @@ public class GameRun {
         outputWinner();
     }
     public void runGame(Player gamer){
-        gamer.inputMove(gamer, field);
+        gamer.moveCheck(gamer, field);
         gamer.move(field.getField());
         gamer.setWinner(field.checkForWinning(field.getField()));
         field.printField(field.getField());
+        gamer.setEndOfMoves(!field.horizontalCheck());
     }
 
     public void outputWinner(){
