@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
-
+//Test2
 public class PerfectNumber {
 //codingame.com
     public void perfect(){
