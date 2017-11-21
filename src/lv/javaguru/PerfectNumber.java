@@ -19,7 +19,7 @@ public class PerfectNumber {
                 .boxed()
                 .filter(a -> perfectNumber % a == 0)
                 .collect(Collectors.toList());
-
+                //.reduce (0, (a,b) -> a+b); strim zakrilsja posle reduce (reduce vozrosaet summu)
 
 //        for (int i = 1; i <= perfectNumber / 2; i++){
 //            if ((perfectNumber % i) == 0){
