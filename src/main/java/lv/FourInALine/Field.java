@@ -2,11 +2,12 @@ package lv.fourinaline;
 
 import java.util.Arrays;
 
-
 import static lv.fourinaline.GameRun.*;
 import static lv.fourinaline.Mark.*;
 
 public class Field {
+    private Mark[][] field = new Mark[VERTICAL][HORIZONTAL];
+
     public Field() {
         for (int i = 0; i < VERTICAL; i++) {
             for (int j = 0; j < HORIZONTAL; j++) {
@@ -15,12 +16,15 @@ public class Field {
         }
     }
 
-    private Mark[][] field = new Mark[VERTICAL][HORIZONTAL];
-
     public void printField(Mark[][] field) {
         Arrays.stream(field)
                 .map(Arrays::toString)
                 .forEach(System.out::println);
+
+
+        for (int i = 0; i < VERTICAL; i++) {
+            System.out.println(Arrays.toString(field[i]));
+        }
     }
 
     public boolean checkForWinning(Mark[][] field) {

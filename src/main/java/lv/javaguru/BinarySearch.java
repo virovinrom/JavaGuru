@@ -1,4 +1,5 @@
 package lv.javaguru;
+
 import java.util.Random;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -11,11 +12,12 @@ public class BinarySearch {
         while (indexOut == -1) {
             number = userInput();
             indexOut = search(arr, number);
-            if (indexOut != -1){
+            if (indexOut != -1) {
                 System.out.println("Arrey index: " + indexOut);
             }
         }
     }
+
     private static int userInput() {
         Scanner scaner = new Scanner(System.in);
         System.out.println("Please enter number from 1 to 20:");
@@ -32,25 +34,25 @@ public class BinarySearch {
         while (top != bottom) {
             i++;
             guessInd = (bottom + top) / 2;
-            if (arr[guessInd] == number){
+            if (arr[guessInd] == number) {
                 index = guessInd;
                 System.out.println(i);
                 return index;
-            }else{
+            } else {
                 if (number < arr[guessInd]) {
                     top = guessInd;
-                }else{
+                } else {
                     bottom = guessInd + 1;
                 }
             }
-            if (top == bottom){
+            if (top == bottom) {
                 System.out.println("Error, not such number.");
             }
         }
         return index;
     }
 
-    private static int[] arrBuilder(int[] arr){
+    private static int[] arrBuilder(int[] arr) {
         Random rand = new Random();
         for (int i = 0; i < arr.length; i++)
             arr[i] = rand.nextInt(20) + 1;
