@@ -15,6 +15,7 @@ public class PerfectNumber {
      //   List<Integer> list = new ArrayList<>();
 
         IntStream.range(1, perfectNumber / 2 + 1)
+        // return IntStream.range(1, perfectNumber / 2 + 1)
                 .boxed()
                 .filter(a -> perfectNumber % a == 0)
                 .collect(Collectors.toList());
