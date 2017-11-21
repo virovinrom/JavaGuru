@@ -1,4 +1,4 @@
-package lv.FourInALine;
+package lv.fourinaline;
 
 import java.util.Scanner;
 

@@ -1,5 +1,4 @@
-package lv.FourInALine;
-
+package lv.fourinaline;
 
 public class StartGameMain {
     public static void main(String[] args) {
@@ -17,7 +16,7 @@ Two player, enter "2"
 ......
 1
 Please select your move player X
-[_, _, _, _, _, _, _]
+crf;tv
 [_, _, _, _, _, _, _]
 [_, _, _, _, _, _, _]
 [_, _, _, _, _, _, _]

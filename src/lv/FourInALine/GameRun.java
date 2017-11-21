@@ -1,7 +1,7 @@
-package lv.FourInALine;
+package lv.fourinaline;
 import java.util.List;
 import java.util.ArrayList;
-
+import static lv.fourinaline.Mark.*;
 public class GameRun {
     protected static final int HORIZONTAL   = 7;
     protected static final int VERTICAL   = 6;
@@ -17,8 +17,8 @@ public class GameRun {
         field.printField(field.getField());
         setGamerOne(listGamer.get(0));
         setGamerTwo(listGamer.get(1));
-        getGamerOne().setSign(Mark.X);
-        getGamerTwo().setSign(Mark.O);
+        getGamerOne().setSign(X);
+        getGamerTwo().setSign(O);
 
         while (!getGamerOne().getWinner() && !getGamerTwo().getWinner() && !getGamerTwo().getEndOfMoves()){
             runGame(getGamerOne());

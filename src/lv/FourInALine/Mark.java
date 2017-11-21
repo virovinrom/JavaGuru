@@ -1,4 +1,4 @@
-package lv.FourInALine;
+package lv.fourinaline;
 
 public enum Mark {
     X("X"), O("O"), EMPTY("_");

@@ -1,5 +1,6 @@
-package lv.FourInALine;
-import static lv.FourInALine.GameRun.*;
+package lv.fourinaline;
+import static lv.fourinaline.GameRun.*;
+import static lv.fourinaline.Mark.*;
 
 public abstract class Player {
 
@@ -11,7 +12,7 @@ public abstract class Player {
 
     public void move(Mark[][] field ){
         for (int i = VERTICAL - 1; i >= 0; i--){
-            if (field[i][getMove()].equals(Mark.EMPTY)){
+            if (field[i][getMove()] == EMPTY){
                 field[i][getMove()] = getSign();
                 i = 0;
             }
@@ -57,4 +58,3 @@ public abstract class Player {
     }
     public abstract int setMove();
 }
-
