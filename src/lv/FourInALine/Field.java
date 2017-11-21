@@ -7,8 +7,6 @@ import static lv.fourinaline.GameRun.*;
 import static lv.fourinaline.Mark.*;
 
 public class Field {
-    private Mark[][] field = new Mark[VERTICAL][HORIZONTAL];
-
     public Field() {
         for (int i = 0; i < VERTICAL; i++) {
             for (int j = 0; j < HORIZONTAL; j++) {
@@ -16,6 +14,8 @@ public class Field {
             }
         }
     }
+
+    private Mark[][] field = new Mark[VERTICAL][HORIZONTAL];
 
     public void printField(Mark[][] field) {
         Arrays.stream(field)
