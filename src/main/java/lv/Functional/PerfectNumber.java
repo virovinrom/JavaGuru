@@ -1,4 +1,4 @@
-package lv.javaguru;
+package lv.Functional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class PerfectNumber {
 
 
     // @Test
-    public  void divivisorsOfSix{
+    public  void divivisorsOfSix(){
         //List<Integer> divisors = perfectNumber.perfect(12)
         //assertequals(Arrays.asList(0,1,2), divisors);
     }

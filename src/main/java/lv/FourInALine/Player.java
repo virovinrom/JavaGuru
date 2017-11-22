@@ -1,4 +1,6 @@
 package lv.fourinaline;
+import org.junit.jupiter.api.Test;
+
 import static lv.fourinaline.GameRun.*;
 import static lv.fourinaline.Mark.*;
 
@@ -18,6 +20,7 @@ public abstract class Player {
             }
         }
     }
+
 
     public void moveCheck(Player gamer, Field field){
         gamer.moveIndex = -1;

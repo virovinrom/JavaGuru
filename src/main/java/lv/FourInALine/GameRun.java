@@ -1,4 +1,6 @@
 package lv.fourinaline;
+//import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import java.util.ArrayList;
 import static lv.fourinaline.Mark.*;
@@ -10,6 +12,7 @@ public class GameRun {
     private Player gamerOne;
     private Player gamerTwo;
     private List<Player> listGamer = new ArrayList<Player>();
+
 
     public void start(){
         getParametersFromUser("first");
