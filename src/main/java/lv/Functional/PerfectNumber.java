@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
+//https://habrahabr.ru/company/luxoft/blog/270383/
 //Test2
 public class PerfectNumber {
     //codingame.com
