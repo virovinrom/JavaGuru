@@ -20,11 +20,6 @@ public class Field {
         Arrays.stream(field)
                 .map(Arrays::toString)
                 .forEach(System.out::println);
-
-
-        for (int i = 0; i < VERTICAL; i++) {
-            System.out.println(Arrays.toString(field[i]));
-        }
     }
 
     public boolean checkForWinning(Mark[][] field) {
