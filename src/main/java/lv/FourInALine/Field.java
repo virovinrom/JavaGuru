@@ -51,24 +51,6 @@ public class Field {
             }
         }
         return list;
-//        AtomicInteger position = new AtomicInteger();
-//        List<Mark> indexList = Arrays.asList(field[0]);
-//        IntStream.range(0, indexList.size())
-//                .peek(x -> position.incrementAndGet())  // increment every element encounter
-//                .filter(X::equals)
-//                .findFirst();
-//                .get();
-//                .forEach(System.out::println);
-//                    System.out.println(position.get());
-//                .filter(i -> EMPTY.equals(i))
-//                .mapT oObj(indexList::get)
-//                .collect(Collectors.toList())
-//                .forEach(System.out::println);
-//                   Stream.of(field[0])
-//                .filter((s) -> s.equals(EMPTY))
-//                .collect(Collectors.toList())
-//                .forEach(System.out::println);
-
     }
 
     public boolean drawCheck() {
