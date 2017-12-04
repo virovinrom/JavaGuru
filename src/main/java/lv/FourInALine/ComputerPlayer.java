@@ -1,13 +1,14 @@
 package lv.fourinaline;
 
+import java.util.List;
 import java.util.Random;
 
 public class ComputerPlayer extends Player {
     @Override
-    public int setMove(){
+    public int setMove(List<Integer> list) {
         Random rand = new Random();
-        moveIndex = rand.nextInt(7);
-        return moveIndex;
+
+        return list.get(rand.nextInt(list.size()));
     }
 
 }
