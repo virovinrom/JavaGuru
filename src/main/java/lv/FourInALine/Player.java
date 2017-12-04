@@ -11,11 +11,12 @@ public abstract class Player {
 
     protected int moveIndex;
 
-    public void move(Mark[][] field ){
-
-        for (int i = VERTICAL - 1; i >= 0; i--){
-            if (field[i][getMove()] == EMPTY){
-                field[i][getMove()] = getSign();
+    public void move(Player gamer, Field field) {
+        System.out.println("Please select your move player " + gamer.getSign() + ", from 0 to 6");
+        gamer.getMoveFromPlayer(field.getFreeIndex());
+        for (int i = VERTICAL - 1; i >= 0; i--) {
+            if (field.getField()[i][moveIndex] == EMPTY) {
+                field.getField()[i][moveIndex] = getSign();
                 i = 0;
             }
         }
@@ -23,13 +24,12 @@ public abstract class Player {
 
 
     public void setSign(Mark sign) {
-       this.sign = sign;
+        this.sign = sign;
     }
+
     public Mark getSign() {
         return this.sign;
     }
-    public int getMove() {
-        return this.moveIndex;
-    }
-    public abstract int setMove(List<Integer> list );
+
+    public abstract int getMoveFromPlayer(List<Integer> list);
 }

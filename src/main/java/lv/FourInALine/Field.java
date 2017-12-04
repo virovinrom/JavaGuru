@@ -2,11 +2,7 @@ package lv.fourinaline;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static lv.fourinaline.GameRun.*;
@@ -14,8 +10,9 @@ import static lv.fourinaline.Mark.*;
 
 public class Field {
     private Mark[][] field = new Mark[VERTICAL][HORIZONTAL];
-    private boolean endOfMoves;
+    private boolean draw;
     private Player winner;
+
     public Field() {
         for (int i = 0; i < VERTICAL; i++) {
             for (int j = 0; j < HORIZONTAL; j++) {
@@ -31,22 +28,20 @@ public class Field {
                 .forEach(System.out::println);
     }
 
-    public void checkForWinning(Mark[][] field, Player player) {
-        if (winCheckHorizontal(field) && winCheckVertical(field)) {
+    public void checkForWinning(Player player) {
+        if (winCheckHorizontal() || winCheckVertical()) {
             setWinner(player);
         }
     }
 
     public List<Integer> getFreeIndex() {
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < field[0].length; i++){
-            if (field[0][i].equals(EMPTY)){
+        for (int i = 0; i < field[0].length; i++) {
+            if (field[0][i].equals(EMPTY)) {
                 list.add(i);
             }
         }
         return list;
-
-
 //        AtomicInteger position = new AtomicInteger();
 //        List<Mark> indexList = Arrays.asList(field[0]);
 //        IntStream.range(0, indexList.size())
@@ -67,33 +62,13 @@ public class Field {
 
     }
 
-    public boolean horizontalCheck() {
-        boolean condition = false;
-        int i = 0;
-        while ((!condition) && (i < HORIZONTAL)) {
-            if (field[0][i] == EMPTY) {
-                condition = true;
-            }
-            i++;
-        }
-        return condition;
+    public boolean drawCheck() {
+        List<Mark> list = Arrays.asList(field[0]);
+        return Stream.of(list)
+                .anyMatch(s -> s.contains(EMPTY));
     }
 
-    public void moveCheck(Player gamer, Field field) {
-        gamer.moveIndex = -1;
-        while (gamer.getMove() < 0 || gamer.getMove() > HORIZONTAL - 1) {
-            System.out.println("Please select your move player " + gamer.getSign() + ", from 0 to 6");
-            List<Integer> list = getFreeIndex();
-            try {
-                gamer.setMove(list);
-            } catch (ArrayIndexOutOfBoundsException exception) {
-                gamer.moveIndex = -1;
-                System.out.println("Wrong column index.");
-            }
-        }
-    }
-
-    public boolean winCheckHorizontal(Mark[][] field) {
+    public boolean winCheckHorizontal() {
         String line = "";
         int i = VERTICAL - 1;
         while ((i >= 0) && (!lineCheck(line))) {
@@ -106,7 +81,7 @@ public class Field {
         return lineCheck(line);
     }
 
-    public boolean winCheckVertical(Mark[][] field) {
+    public boolean winCheckVertical() {
         String line = "";
         int i = 0;
         while ((i < HORIZONTAL) && (!lineCheck(line))) {
@@ -124,6 +99,7 @@ public class Field {
             return true;
         } else return false;
     }
+
     public Player getWinner() {
         return winner;
     }
@@ -136,11 +112,11 @@ public class Field {
         return field;
     }
 
-    public void setEndOfMoves(boolean endOfMoves) {
-        this.endOfMoves = endOfMoves;
+    public void setDraw(boolean draw) {
+        this.draw = draw;
     }
 
-    public boolean getEndOfMoves() {
-        return endOfMoves;
+    public boolean getDraw() {
+        return draw;
     }
 }

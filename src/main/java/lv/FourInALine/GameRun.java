@@ -31,7 +31,7 @@ public class GameRun {
 
     public void playerIteration() {
         Player currentPlayer;
-        while (field.getWinner() == null && !field.getEndOfMoves()) {
+        while (field.getWinner() == null && !field.getDraw()) {
             currentPlayer = getGamerOne();
             runGame(currentPlayer);
             if (field.getWinner() == null) {
@@ -42,20 +42,19 @@ public class GameRun {
     }
 
     public void runGame(Player gamer) {
-        field.moveCheck(gamer, field);
-        gamer.move(field.getField());
-        //field.setWinner(field.checkForWinning(field.getField()));
+        gamer.move(gamer, field);
+        field.checkForWinning(gamer);
         field.printField(field.getField());
-        field.setEndOfMoves(!field.horizontalCheck());
+        field.setDraw(!field.drawCheck());
     }
 
     public void outputWinner() {
-        if (field.getWinner().equals(getGamerOne())) {
+        if (field.getDraw()){
+            System.out.println("Draw");
+        }else if (field.getWinner().equals(getGamerOne())) {
             System.out.println("The winner is the player with sign X");
         } else if (field.getWinner().equals(getGamerTwo())) {
             System.out.println("The winner is the player with sign O");
-        } else {
-            System.out.println("Draw");
         }
     }
 

@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class UserPlayer extends Player {
     @Override
-    public int setMove(List<Integer> list) {
+    public int getMoveFromPlayer(List<Integer> list) {
         Scanner scanner = new Scanner(System.in);
         boolean check = false;
         while (!check) {
@@ -21,3 +21,4 @@ public class UserPlayer extends Player {
         return moveIndex;
     }
 }
+

@@ -5,9 +5,8 @@ import java.util.Random;
 
 public class ComputerPlayer extends Player {
     @Override
-    public int setMove(List<Integer> list) {
+    public int getMoveFromPlayer(List<Integer> list) {
         Random rand = new Random();
-
         return list.get(rand.nextInt(list.size()));
     }
 

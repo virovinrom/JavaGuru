@@ -25,7 +25,7 @@ public class GameTest {
     @Test
     public void setMoveUserTest() {
         List<Integer> list = Arrays.asList(1, 2);
-        int index = userPlayer.setMove(list);
+        int index = userPlayer.getMoveFromPlayer(list);
         assertEquals(1, index);
     }
 
@@ -41,7 +41,7 @@ public class GameTest {
     @Test
     public void setMoveTest() {
         List<Integer> list = Arrays.asList(1, 2);
-        int index = computerPlayer.setMove(list);
+        int index = computerPlayer.getMoveFromPlayer(list);
         assertEquals(1, index);
     }
 }
