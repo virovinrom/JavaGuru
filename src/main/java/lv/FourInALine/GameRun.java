@@ -50,8 +50,10 @@ public class GameRun {
     }
 
     public void runGame(Player gamer) {
-        System.out.println("Please select your move player " + gamer.getSign() + ", from 0 to 6");
-        field.move(gamer.getMoveFromPlayer(field), gamer.getSign());
+        while (!field.cheaterCheck(gamer.getMoveFromPlayer(field))){
+            System.out.println("Please select your move player " + gamer.getSign() + ", from 0 to 6");
+        }
+        field.move(gamer.moveIndex, gamer.getSign());
         field.checkForWinning(gamer);
         field.printField(field.getField());
         field.setDraw(!field.drawCheck());

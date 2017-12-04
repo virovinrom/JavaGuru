@@ -12,11 +12,15 @@ public class UserPlayer extends Player {
         Scanner scanner = new Scanner(System.in);
         boolean check = false;
         while (!check) {
-            moveIndex = Integer.valueOf(scanner.nextLine());
-            check = Stream.of(list)
-                    .anyMatch(s -> s.contains(moveIndex));
-            if (!check) {
-                System.out.println("Please choose another column.");
+            try {
+                moveIndex = Integer.valueOf(scanner.nextLine());
+                check = Stream.of(list)
+                        .anyMatch(s -> s.contains(moveIndex));
+                if (!check) {
+                    System.out.println("Please choose another column.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please choose column");
             }
         }
         return moveIndex;

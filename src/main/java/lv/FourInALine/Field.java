@@ -21,7 +21,6 @@ public class Field {
         }
     }
 
-
     public void printField(Mark[][] field) {
         Arrays.stream(field)
                 .map(Arrays::toString)
@@ -52,7 +51,11 @@ public class Field {
         }
         return list;
     }
-
+    public boolean cheaterCheck(int index){
+        List<Integer> list = getFreeIndex();
+        return Stream.of(list)
+                .anyMatch(s -> s.contains(index));
+    }
     public boolean drawCheck() {
         List<Mark> list = Arrays.asList(field[0]);
         return Stream.of(list)
