@@ -7,7 +7,8 @@ import java.util.stream.Stream;
 
 public class UserPlayer extends Player {
     @Override
-    public int getMoveFromPlayer(List<Integer> list) {
+    public int getMoveFromPlayer(Field field) {
+        List<Integer> list = field.getFreeIndex();
         Scanner scanner = new Scanner(System.in);
         boolean check = false;
         while (!check) {

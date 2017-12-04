@@ -29,29 +29,38 @@ public class GameRun {
         outputWinner();
     }
 
-    public void playerIteration() {
-        Player currentPlayer;
-        while (field.getWinner() == null && !field.getDraw()) {
+    public Player switchPlayer(Player currentPlayer) {
+        if (currentPlayer == getGamerTwo()) {
             currentPlayer = getGamerOne();
-            runGame(currentPlayer);
+        } else {
+            currentPlayer = getGamerTwo();
+        }
+        runGame(currentPlayer);
+        return currentPlayer;
+    }
+
+    public void playerIteration() {
+        Player currentPlayer = getGamerTwo();
+        while (field.getWinner() == null && !field.getDraw()) {
+            currentPlayer = switchPlayer(currentPlayer);
             if (field.getWinner() == null) {
-                currentPlayer = getGamerTwo();
-                runGame(currentPlayer);
+                currentPlayer = switchPlayer(currentPlayer);
             }
         }
     }
 
     public void runGame(Player gamer) {
-        gamer.move(gamer, field);
+        System.out.println("Please select your move player " + gamer.getSign() + ", from 0 to 6");
+        field.move(gamer.getMoveFromPlayer(field), gamer.getSign());
         field.checkForWinning(gamer);
         field.printField(field.getField());
         field.setDraw(!field.drawCheck());
     }
 
     public void outputWinner() {
-        if (field.getDraw()){
+        if (field.getDraw()) {
             System.out.println("Draw");
-        }else if (field.getWinner().equals(getGamerOne())) {
+        } else if (field.getWinner().equals(getGamerOne())) {
             System.out.println("The winner is the player with sign X");
         } else if (field.getWinner().equals(getGamerTwo())) {
             System.out.println("The winner is the player with sign O");

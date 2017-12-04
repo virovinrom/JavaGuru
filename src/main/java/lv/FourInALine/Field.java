@@ -34,6 +34,15 @@ public class Field {
         }
     }
 
+    public void move(int moveIndex, Mark sign) {
+        for (int i = VERTICAL - 1; i >= 0; i--) {
+            if (field[i][moveIndex] == EMPTY) {
+                field[i][moveIndex] = sign;
+                i = 0;
+            }
+        }
+    }
+
     public List<Integer> getFreeIndex() {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < field[0].length; i++) {

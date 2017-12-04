@@ -24,24 +24,22 @@ public class GameTest {
 
     @Test
     public void setMoveUserTest() {
-        List<Integer> list = Arrays.asList(1, 2);
-        int index = userPlayer.getMoveFromPlayer(list);
+        int index = userPlayer.getMoveFromPlayer(field);
         assertEquals(1, index);
     }
 
     @Test
     public void getFreeIndexTest() {
-        Mark[][] f = field.getField();
-        f[0][3] = X;
-        f[0][2] = X;
+        Mark[][] markPlace = field.getField();
+        markPlace[0][3] = X;
+        markPlace[0][2] = X;
         List<Integer> list = field.getFreeIndex();
         assertEquals(Arrays.asList(0, 1, 4, 5, 6), list);
     }
 
     @Test
     public void setMoveTest() {
-        List<Integer> list = Arrays.asList(1, 2);
-        int index = computerPlayer.getMoveFromPlayer(list);
+        int index = computerPlayer.getMoveFromPlayer(field);
         assertEquals(1, index);
     }
 }
