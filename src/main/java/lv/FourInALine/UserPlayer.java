@@ -14,8 +14,7 @@ public class UserPlayer extends Player {
         while (!check) {
             try {
                 moveIndex = Integer.valueOf(scanner.nextLine());
-                check = Stream.of(list)
-                        .anyMatch(s -> s.contains(moveIndex));
+                check = field.cheaterCheck(moveIndex);
                 if (!check) {
                     System.out.println("Please choose another column.");
                 }
